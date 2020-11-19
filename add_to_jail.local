@@ -1,0 +1,42 @@
+# fail2ban odoo rules by Glasswall B.V. (www.glasswall.nl)
+# --------------------------------------------------------
+# the default odoo log is in UTC timeformat, to use fail2ban you have to ensure you count the difference between your localtime
+# UTC doesn not have daylight saving, so if u choose to use odoo default logging be sure to change it by hand.
+
+[odoo]
+enabled = false
+port = http,https
+bantime = 8100   # 900s (15 min) + 7200s (2 hours diffecence in odoo log and systemtime)
+maxretry = 4
+findtime = 8100   # 900s (15 min) + 7200s (2 hours diffecence in odoo log and systemtime)
+logpath = /var/log/odoo/odoo-server.log
+
+[odoo-404]
+enabled = false
+port = http,https
+bantime = 10800   # 3600s (1 uur) + 7200s (2 hours diffecence in odoo log and systemtime)
+#ignoreip = 127.0.0.1
+maxretry = 30
+findtime = 7800   # 600s (10 min) + 7200s (2 hours diffecence in odoo log and systemtime)
+logpath = /var/log/odoo/odoo-server.log
+
+
+# enable the odoo syslog rules if you have odoo syslog enabled
+# this is the prefered setting to use odoo in combination with fail2ban.
+
+[odoo-syslog]
+enabled = true
+port = http,https
+bantime = 900
+maxretry = 4
+findtime = 900
+logpath = /var/log/syslog
+
+[odoo-404-syslog]
+enabled = true
+port = http,https
+bantime = 3600
+#ignoreip = 127.0.0.1
+maxretry = 30
+findtime = 600
+logpath = /var/log/syslog
