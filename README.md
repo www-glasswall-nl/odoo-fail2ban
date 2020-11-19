@@ -32,4 +32,5 @@ The fail2ban odoo filters contain 2 regularexpressions:
 - seccond to check for 404's (odoo-404.conf and odoo-404-syslog.conf)
 
 Probably the regularexpressions can more efficient but as they are now they do the job.
+
 Glasswall hopes these files will improve your Odoo security.
