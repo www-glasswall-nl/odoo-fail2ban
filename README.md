@@ -1,7 +1,8 @@
 # odoo-fail2ban
-# 15 apr 2019 - initial config done by Jan van de Rijt.
+* 15 apr 2019 - initial config done by Jan van de Rijt.
 
 [Fail2Ban Odoo ruleset]
+
 In order to use fail2ban to protect Odoo Glasswall has provided some rules to achieve that purpose.
 There are 4 files included with the defined regex to provide the fail2ban jail the rules.
 
@@ -9,6 +10,7 @@ There are 4 files included with the defined regex to provide the fail2ban jail t
 The add_to_jail.local are the actual rule settings.
 
 [Installation]
+
 Install fail2ban.
 enable "syslog = true" in the odoo-server.conf and restart odoo (preferred but not necessary).
 copy the odoo*.conf files to the /etc/fail2ban/filter.d/ directory.
@@ -16,6 +18,7 @@ append the rules add_to_jail.local to the /etc/fail2ban/jail.local file, if ther
 restart fail2ban and the rules are aplied.
 
 [Note]
+
 The default Odoo installation logs to odoo-server.log, the time standard used in this log is UTC the time fail2ban uses is the system time (in my case CET).
 To overcome this time issue i added 7200 secconds (2+hours included daylight saving) to the bantime in the rules file.
 Changing the Odoo setting to use the syslog as logging file then the actual systemtime is used and you can use fail2ban without additional timecorrection.
